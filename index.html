@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bugün Ne Yapsam?</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #667eea, #764ba2);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+    .card {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      max-width: 400px;
+      margin: 2rem auto;
+    }
+    button {
+      background-color: #ffffff22;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      color: white;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #ffffff44;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎲 Bugün Ne Yapsam?</h1>
+  <div class="card">
+    <p id="suggestion">Hadi bir şeyler önerelim...</p>
+    <button onclick="getSuggestion()">Yeni Tavsiye</button>
+  </div>
+
+  <script>
+    const suggestions = [
+      "Bir yürüyüşe çık 🥾",
+      "Yeni bir kitap başlat 📚",
+      "Kendine güzel bir kahve yap ☕",
+      "Rastgele bir Wikipedia makalesi oku 🌐",
+      "5 dakikalık meditasyon yap 🧘",
+      "Kısa bir egzersiz dene 💪",
+      "Yeni bir yemek tarifi dene 🍳",
+      "Rastgele bir şarkı dinle 🎵"
+    ];
+
+    function getSuggestion() {
+      const index = Math.floor(Math.random() * suggestions.length);
+      document.getElementById('suggestion').textContent = suggestions[index];
+    }
+  </script>
+
+</body>
+</html>
