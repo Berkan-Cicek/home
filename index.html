@@ -2,37 +2,40 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Özür Dilerim ❤️</title>
+  <title>Geçmişe Reset Olur mu? 🥹</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
       background-color: #ffe6e6;
       font-family: 'Comic Sans MS', cursive, sans-serif;
       text-align: center;
-      padding: 3rem;
+      padding: 1rem;
+      margin: 0;
     }
 
     .container {
       background-color: #fff0f5;
       border-radius: 20px;
-      padding: 2rem;
-      max-width: 500px;
+      padding: 1rem;
+      max-width: 90%;
       margin: auto;
       box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     }
 
     h1 {
       color: #d63384;
+      font-size: 2rem;
     }
 
     .question {
       font-size: 1.5rem;
-      margin: 1.5rem 0;
+      margin: 0.5rem 0;
+      transition: font-size 0.3s ease;
     }
 
     button {
       padding: 1rem 2rem;
       margin: 0.5rem;
-      font-size: 1.2rem;
       border: none;
       border-radius: 10px;
       cursor: pointer;
@@ -42,10 +45,12 @@
     #yesBtn {
       background-color: #ff69b4;
       color: white;
+      font-size: 1.2rem;
     }
 
     #noBtn {
       background-color: #ccc;
+      font-size: 1.2rem;
     }
 
     #imageContainer {
@@ -57,35 +62,69 @@
       max-width: 100%;
       border-radius: 15px;
     }
+
+    @media screen and (max-width: 600px) {
+      #yesBtn, #noBtn {
+        width: 100%;
+        font-size: 1.5rem;
+      }
+    }
   </style>
 </head>
 <body>
 
   <div class="container">
     <h1>😔 Özür Dilerim...</h1>
-    <p class="question">Kırdıysam affet... Barışalım mı?</p>
+    <p class="question" id="questionText">Geçmişte yaptığım saçma hareketler için özür dilerim, onları olmamış gibi sayar mısın? 0'dan Eylül ayı gibi devam edelim mi ? 🥹</p>
     <button id="yesBtn">Evet 💖</button>
     <button id="noBtn">Hayır 🙈</button>
 
     <div id="imageContainer">
-      <p style="font-size: 1.2rem;">Yeey! 😍 Seni çok seviyorum!</p>
-      <img src="https://i.pinimg.com/originals/6f/4c/b5/6f4cb507c1f6c50224ccbe4d588e844d.gif" alt="Tatlı Karikatür">
+      <p style="font-size: 1.3rem;"> </p>
+      <img src="g.gif" alt="Dans Eden Gorilla"> 
+
     </div>
   </div>
 
   <script>
-    let yesBtn = document.getElementById("yesBtn");
-    let noBtn = document.getElementById("noBtn");
-    let imageContainer = document.getElementById("imageContainer");
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const imageContainer = document.getElementById("imageContainer");
+    const questionText = document.getElementById("questionText");
+
     let yesFontSize = 1.2;
+    let clickCount = 0;
+
+    const messages = [
+        "Çoğu Şeyde haklısın, evet der misin? 😭",
+        "Sude hadii ama evet de... 😢",
+        "Sude Lütfennn, evet der misin? 🥺",
+        "Her şey daha iyi olabilir, emin misin?.. 😥",
+        "Tamam Sen bilirsin , ama tekrar düşünmek ister misin? 😭",
+
+    ];
 
     noBtn.addEventListener("click", () => {
-      yesFontSize += 0.3;
-      yesBtn.style.fontSize = yesFontSize + "rem";
+      if (clickCount < messages.length) {
+        questionText.textContent = messages[clickCount];
+        clickCount++;
+
+        // Evet butonunu büyüt
+        yesFontSize += 1.3;
+        yesBtn.style.fontSize = `${yesFontSize}rem`;
+
+        // 5. tıklamadan sonra hayır butonunu gizle
+        if (clickCount === messages.length) {
+          noBtn.style.display = "none";
+        }
+      }
     });
 
     yesBtn.addEventListener("click", () => {
       imageContainer.style.display = "block";
+      questionText.textContent = "Evet diyeceğini zaten biliyordum! 😎";
+      yesBtn.style.display = "none";
+      noBtn.style.display = "none";
     });
   </script>
 
