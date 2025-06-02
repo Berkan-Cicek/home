@@ -2,63 +2,91 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bugün Ne Yapsam?</title>
+  <title>Özür Dilerim ❤️</title>
   <style>
     body {
-      background: linear-gradient(to right, #667eea, #764ba2);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: white;
+      background-color: #ffe6e6;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
       text-align: center;
-      padding: 2rem;
+      padding: 3rem;
     }
-    .card {
-      background-color: rgba(255, 255, 255, 0.1);
+
+    .container {
+      background-color: #fff0f5;
+      border-radius: 20px;
       padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      max-width: 400px;
-      margin: 2rem auto;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     }
+
+    h1 {
+      color: #d63384;
+    }
+
+    .question {
+      font-size: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
     button {
-      background-color: #ffffff22;
-      border: none;
       padding: 1rem 2rem;
-      border-radius: 8px;
-      color: white;
-      font-size: 1.1rem;
+      margin: 0.5rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: all 0.3s ease;
     }
-    button:hover {
-      background-color: #ffffff44;
+
+    #yesBtn {
+      background-color: #ff69b4;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #ccc;
+    }
+
+    #imageContainer {
+      margin-top: 2rem;
+      display: none;
+    }
+
+    #imageContainer img {
+      max-width: 100%;
+      border-radius: 15px;
     }
   </style>
 </head>
 <body>
 
-  <h1>🎲 Bugün Ne Yapsam?</h1>
-  <div class="card">
-    <p id="suggestion">Hadi bir şeyler önerelim...</p>
-    <button onclick="getSuggestion()">Yeni Tavsiye</button>
+  <div class="container">
+    <h1>😔 Özür Dilerim...</h1>
+    <p class="question">Kırdıysam affet... Barışalım mı?</p>
+    <button id="yesBtn">Evet 💖</button>
+    <button id="noBtn">Hayır 🙈</button>
+
+    <div id="imageContainer">
+      <p style="font-size: 1.2rem;">Yeey! 😍 Seni çok seviyorum!</p>
+      <img src="https://i.pinimg.com/originals/6f/4c/b5/6f4cb507c1f6c50224ccbe4d588e844d.gif" alt="Tatlı Karikatür">
+    </div>
   </div>
 
   <script>
-    const suggestions = [
-      "Bir yürüyüşe çık 🥾",
-      "Yeni bir kitap başlat 📚",
-      "Kendine güzel bir kahve yap ☕",
-      "Rastgele bir Wikipedia makalesi oku 🌐",
-      "5 dakikalık meditasyon yap 🧘",
-      "Kısa bir egzersiz dene 💪",
-      "Yeni bir yemek tarifi dene 🍳",
-      "Rastgele bir şarkı dinle 🎵"
-    ];
+    let yesBtn = document.getElementById("yesBtn");
+    let noBtn = document.getElementById("noBtn");
+    let imageContainer = document.getElementById("imageContainer");
+    let yesFontSize = 1.2;
 
-    function getSuggestion() {
-      const index = Math.floor(Math.random() * suggestions.length);
-      document.getElementById('suggestion').textContent = suggestions[index];
-    }
+    noBtn.addEventListener("click", () => {
+      yesFontSize += 0.3;
+      yesBtn.style.fontSize = yesFontSize + "rem";
+    });
+
+    yesBtn.addEventListener("click", () => {
+      imageContainer.style.display = "block";
+    });
   </script>
 
 </body>
